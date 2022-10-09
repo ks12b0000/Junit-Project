@@ -100,6 +100,7 @@ public class BookRepositoryTest {
     }
 
     // 5. 책 수정
+    @Sql("classpath:db/tableInit.sql")
     @Test
     public void 책수정_Test() {
         // given
@@ -109,16 +110,27 @@ public class BookRepositoryTest {
         Book book = new Book(id, title, author);
 
         // when
+//        bookRepository.findAll().stream()
+//                .forEach((book1) -> {
+//                    System.out.println(book1.getTitle());
+//                    System.out.println(book1.getId());
+//                    System.out.println(book1.getAuthor());
+//                    System.out.println("1.==========================");
+//                });
+
         Book bookPS = bookRepository.save(book);
 
-        bookRepository.findAll().stream()
-                .forEach((book1) -> {
-                    System.out.println(book1.getTitle());
-                    System.out.println(book1.getId());
-                    System.out.println(book1.getAuthor());
-                    System.out.println("==========================");
-                });
+//        bookRepository.findAll().stream()
+//                .forEach((book1) -> {
+//                    System.out.println(book1.getTitle());
+//                    System.out.println(book1.getId());
+//                    System.out.println(book1.getAuthor());
+//                    System.out.println("2.==========================");
+//                });
 
         // then
+        assertEquals(id, bookPS.getId());
+        assertEquals(title, bookPS.getTitle());
+        assertEquals(author, bookPS.getAuthor());
     }
 }
