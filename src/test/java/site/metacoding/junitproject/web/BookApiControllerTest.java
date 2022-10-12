@@ -81,7 +81,7 @@ public class BookApiControllerTest {
 
     @Sql("classpath:db/tableInit.sql")
     @Test
-    public void getBookList() {
+    public void getBookList_Test() {
         // given
 
         // when
@@ -100,7 +100,7 @@ public class BookApiControllerTest {
 
     @Sql("classpath:db/tableInit.sql")
     @Test
-    public void getBookOne() throws Exception {
+    public void getBookOne_Test() throws Exception {
         // given
         Long id = 1L;
 
@@ -121,7 +121,7 @@ public class BookApiControllerTest {
 
     @Sql("classpath:db/tableInit.sql")
     @Test
-    public void deleteBook() {
+    public void deleteBook_Test() {
         // given
         Long id = 1L;
 
@@ -138,7 +138,7 @@ public class BookApiControllerTest {
 
     @Sql("classpath:db/tableInit.sql")
     @Test
-    public void updateBook() throws Exception{
+    public void updateBook_Test() throws Exception{
         // given
         Long id = 1L;
         BookSaveReqDto bookSaveReqDto = new BookSaveReqDto();
@@ -149,7 +149,7 @@ public class BookApiControllerTest {
 
         // when
         HttpEntity<String> request = new HttpEntity<>(body, headers);
-        ResponseEntity<String> response = rt.exchange("/api/v1/book" + id, HttpMethod.PUT, request, String.class);
+        ResponseEntity<String> response = rt.exchange("/api/v1/book/" + id, HttpMethod.PUT, request, String.class);
 
 
         // then
